@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:udemy_quiz_app/data/question.dart';
-import 'package:udemy_quiz_app/data/question_summary.dart';
+import 'package:udemy_quiz_app/questions_summary/question_summary.dart';
 
 class ResultScreen extends StatelessWidget {
-  const ResultScreen({super.key, required this.chosenAnswer});
+  const ResultScreen(
+      {super.key, required this.chosenAnswer, required this.onRestart});
 
   final List<String> chosenAnswer;
+  final void Function() onRestart;
 
-  List<Map<String, Object>> getSummartData() {
+  List<Map<String, Object>> getSummaryData() {
     final List<Map<String, Object>> summary = [];
 
     for (var i = 0; i < chosenAnswer.length; i++) {
@@ -23,6 +25,12 @@ class ResultScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final summaryData = getSummaryData();
+    final numTotalQuestions = questions.length;
+    final numCorrectQuestions = summaryData.where((data) {
+      return data['user_answer'] == data['correct_answer'];
+    }).length;
+
     return SizedBox(
       width: double.infinity,
       child: Container(
@@ -30,13 +38,13 @@ class ResultScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              "Your answered X out of Y questions correctly!",
+            Text(
+              "Your answered $numCorrectQuestions  out of $numTotalQuestions questions correctly!",
             ),
             const SizedBox(
               height: 30,
             ),
-            QuestionsSummary(getSummartData()),
+            QuestionsSummary(summaryData),
             const SizedBox(
               height: 30,
             ),
