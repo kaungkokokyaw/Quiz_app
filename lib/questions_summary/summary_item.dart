@@ -23,9 +23,29 @@ class SummaryItem extends StatelessWidget {
             width: 20,
           ),
           Expanded(
-            child: Text(
-              itemData['question'] as String,
-              style: GoogleFonts.lato(color: Colors.white, fontSize: 13),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  itemData['question'] as String,
+                  style: GoogleFonts.lato(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  itemData['user_answer'] as String,
+                  style:
+                      const TextStyle(color: Color.fromARGB(255, 232, 41, 181)),
+                ),
+                Text(
+                  itemData['correct_answer'] as String,
+                  style: const TextStyle(color: Colors.green),
+                )
+              ],
             ),
           ),
         ],

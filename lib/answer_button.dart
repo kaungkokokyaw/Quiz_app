@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 
 class AnswerButton extends StatelessWidget {
@@ -12,7 +14,7 @@ class AnswerButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: OnTap,
       style: ElevatedButton.styleFrom(
-          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 30),
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
           backgroundColor: const Color.fromARGB(255, 88, 154, 239),
           foregroundColor: Colors.white,
           shape:
