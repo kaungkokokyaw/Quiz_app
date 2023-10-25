@@ -25,7 +25,7 @@ class SummaryItem extends StatelessWidget {
           Expanded(
             child: Text(
               itemData['question'] as String,
-              style: GoogleFonts.lato(color: Colors.white, fontSize: 15),
+              style: GoogleFonts.lato(color: Colors.white, fontSize: 13),
             ),
           ),
         ],
